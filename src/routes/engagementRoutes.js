@@ -1,0 +1,12 @@
+const router = require('express').Router();
+const c = require('../controllers/engagementController');
+const { auth } = require('../middleware/auth');
+router.use(auth);
+router.get('/favorites', c.listFavorites);
+router.post('/favorites/:stationId/toggle', c.toggleFavorite);
+router.get('/stations/:stationId/reviews', c.listReviews);
+router.post('/stations/:stationId/reviews', c.createReview);
+router.get('/support/tickets', c.listTickets);
+router.post('/support/tickets', c.createTicket);
+router.post('/reports', c.createReport);
+module.exports = router;
